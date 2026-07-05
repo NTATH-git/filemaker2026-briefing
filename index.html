@@ -55,6 +55,7 @@
     margin:0 0 24px; text-wrap:balance; max-width:22ch}
   .hero h1 em{font-style:normal; color:var(--crimson); position:relative; white-space:nowrap}
   .hero__lead{font-size:clamp(1rem,1.9vw,1.2rem); color:#c7d3de; max-width:56ch; margin:0 0 34px}
+  .hero__key{font-size:clamp(1.15rem,2.4vw,1.55rem); font-weight:700; color:var(--on-dark); line-height:1.55; margin:0 0 22px; max-width:34ch; border-left:3px solid var(--crimson); padding-left:16px; text-wrap:balance}
   .transition{display:inline-flex; align-items:stretch; gap:0; border:1px solid var(--line-d); border-radius:3px; overflow:hidden; background:rgba(255,255,255,.02)}
   .transition__cell{padding:12px 20px; display:flex; flex-direction:column; gap:2px}
   .transition__k{font-family:var(--mono); font-size:11px; letter-spacing:.1em; color:var(--muted); text-transform:uppercase}
@@ -254,7 +255,8 @@
     <div class="wrap">
       <p class="eyebrow">医局内ご相談 · FileMaker Pro / Server 更新 / 2026.07</p>
       <h1><em>サーバー更新</em>に関する御相談</h1>
-      <p class="hero__lead">現在の <b>FileMaker Pro / Server(バージョン 19)を最新の 2026 へ更新</b>したいのですが、現行サーバーでは動作要件を満たせません。そのため <b>サーバーの買い換え(およそ 50 万円)</b>が必要になります。あわせて、最新版で使える AI 検索が皆さまの研究にどう役立つかも、この資料でご説明します。ご相談させてください。</p>
+      <p class="hero__key">老朽化により、FileMaker と サーバーの更新は避けられません。</p>
+      <p class="hero__lead">現行の <b>FileMaker Pro / Server(バージョン 19)は老朽化</b>が進み、サポート・セキュリティの面でも限界に近づいています。最新の 2026 は現行サーバーの動作要件を満たさず、<b>サーバー本体の買い換え(およそ 50 万円)</b>が必要です。老朽化に伴う<b>やむを得ない対応</b>として、皆さまにご相談いたします。あわせて、新環境で使える AI 検索が研究にどう役立つかもご説明します。</p>
       <div class="transition" role="img" aria-label="FileMaker 19 から FileMaker 2026 への移行">
         <div class="transition__cell transition__cell--old">
           <span class="transition__k">現行</span>
@@ -275,7 +277,7 @@
   <!-- summary -->
   <section class="summary">
     <div class="summary__grid">
-      <div class="summary__item"><span class="summary__n">01</span><div><div class="summary__t">FileMaker の老朽化に伴い更新が必要</div><div class="summary__d">現行の FileMaker Pro / Server(19)は老朽化。最新版(2026)への更新が必要です。</div></div></div>
+      <div class="summary__item"><span class="summary__n">01</span><div><div class="summary__t">FileMaker の老朽化に伴い更新が必要</div><div class="summary__d">現行の FileMaker Pro / Server(19)は老朽化。最新版(2026)への更新はやむを得ない段階です。</div></div></div>
       <div class="summary__item"><span class="summary__n">02</span><div><div class="summary__t">サーバーの買い換えが必要</div><div class="summary__d">最新版は現行サーバーの動作要件に非対応。新しいサーバーが要ります。</div></div></div>
       <div class="summary__item"><span class="summary__n">03</span><div><div class="summary__t">費用はおよそ50万円</div><div class="summary__d">新サーバーの購入費(概算)。構成・容量により変動します。</div></div></div>
     </div>
@@ -290,7 +292,7 @@
       <div class="why__body">
         <div class="why__list">
           <div class="why__pt rv"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 8v5m0 3h.01M12 3l9 16H3L12 3z" stroke="#c81e3a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><div><h4>更新には新しいサーバーが要る</h4><p>FileMaker 19 は 2020 年の製品。最新の 2026(Pro / Server)は新しいサーバー OS が前提のため、サーバー本体の買い換えが必要です。現行機の老朽化も進んでいます。</p></div></div>
-          <div class="why__pt rv rv-d1"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 7v10a2 2 0 002 2h12a2 2 0 002-2V7M4 7l8-4 8 4M4 7l8 4 8-4" stroke="#c81e3a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><div><h4>障害時のデータ保全リスク</h4><p>貴重な症例データを守る仕組みが手薄。万一のサーバー障害に対する備えを、この機会に一段引き上げます。</p></div></div>
+          <div class="why__pt rv rv-d1"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 7v10a2 2 0 002 2h12a2 2 0 002-2V7M4 7l8-4 8 4M4 7l8 4 8-4" stroke="#c81e3a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><div><h4>障害時のデータ保全リスク</h4><p>老朽化したサーバーは障害のリスクが高く、貴重な症例データを守るためにも更新は先送りできません。</p></div></div>
           <div class="why__pt rv rv-d2"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="#c81e3a" stroke-width="1.8"/><path d="M20 20l-4-4" stroke="#c81e3a" stroke-width="1.8" stroke-linecap="round"/></svg><div><h4>「探しにくい」という壁</h4><p>キーワード完全一致の検索では、表記ゆれや横断的な抽出に手間がかかる。資産があっても引き出しにくいのが実情です。</p></div></div>
         </div>
         <div class="stats rv rv-d1">
