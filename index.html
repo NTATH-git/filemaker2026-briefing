@@ -90,6 +90,8 @@
   .sec--ink .sec__ey{color:var(--teal-l)}
   .sec__ey::before{content:attr(data-n); color:var(--crimson); font-weight:700}
   .sec__h{font-size:clamp(1.6rem,3.6vw,2.5rem); font-weight:800; letter-spacing:-.01em; line-height:1.16; margin:0 0 20px; text-wrap:balance; max-width:20ch}
+  .sec__h .brm{display:none}
+  @media(max-width:768px){.sec__h{text-wrap:normal; word-break:normal} .sec__h .brm{display:block}}
   .sec__intro{font-size:clamp(1rem,1.5vw,1.1rem); color:var(--slate); max-width:60ch; margin:0}
   .sec--ink .sec__intro{color:#c1cfdb}
 
@@ -103,7 +105,7 @@
   .why__pt p{color:var(--slate); font-size:.95rem}
   .stats{display:flex; flex-direction:column; gap:2px; background:var(--line); border:1px solid var(--line); border-radius:4px; overflow:hidden}
   .stat{background:var(--surface); padding:22px 24px; display:flex; align-items:baseline; gap:14px}
-  .stat__v{font-family:var(--mono); font-size:2rem; font-weight:700; color:var(--ink); font-variant-numeric:tabular-nums; line-height:1}
+  .stat__v{font-family:var(--mono); font-size:2rem; font-weight:700; color:var(--ink); font-variant-numeric:tabular-nums; line-height:1; white-space:nowrap}
   .stat__v .u{font-size:1rem; color:var(--crimson); margin-left:2px}
   .stat__l{font-size:.9rem; color:var(--slate)}
 
@@ -283,7 +285,7 @@
   <section class="sec sec--paper" id="why">
     <div class="wrap">
       <p class="sec__ey rv" data-n="01">Background</p>
-      <h2 class="sec__h rv rv-d1">いま動く理由 — 20年分の資産を、次の10年へ</h2>
+      <h2 class="sec__h rv rv-d1">いま動く理由 —<br class="brm">20年分の資産を、次の10年へ</h2>
       <p class="sec__intro rv rv-d2">当科のデータベースには、長年の症例が確かに積み上がっています。問題は「量」ではなく、それを支える土台が寿命を迎えつつあること、そして蓄積を研究に活かしきれていないことです。</p>
       <div class="why__body">
         <div class="why__list">
@@ -304,7 +306,7 @@
   <section class="sec sec--light" id="move">
     <div class="wrap">
       <p class="sec__ey rv" data-n="02">Migration</p>
-      <h2 class="sec__h rv rv-d1">移行の全体像 — 旧環境から新環境へ</h2>
+      <h2 class="sec__h rv rv-d1">移行の全体像 —<br class="brm">旧環境から新環境へ</h2>
       <p class="sec__intro rv rv-d2">日々の使い勝手はそのままに、土台を新しくします。変わるのは「検索の賢さ」と「データの守り」です。</p>
       <div class="ba rv rv-d1">
         <div class="ba__col ba__col--old">
@@ -338,7 +340,7 @@
   <section class="sec sec--ink" id="ai">
     <div class="wrap">
       <p class="sec__ey rv" data-n="03">AI in FileMaker 2026</p>
-      <h2 class="sec__h rv rv-d1">新しくできること — AI が研究を後押しする</h2>
+      <h2 class="sec__h rv rv-d1">新しくできること —<br class="brm">AI が研究を後押しする</h2>
       <p class="sec__intro rv rv-d2">FileMaker 2026 は AI 検索を標準で備えます。特別なプログラミングなしに、日々の症例データへ「意味」で問いかけられるようになります。</p>
       <div class="ai">
         <article class="aic rv">
