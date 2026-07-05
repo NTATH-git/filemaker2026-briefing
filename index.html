@@ -35,7 +35,7 @@
     backdrop-filter:blur(10px); border-bottom:1px solid var(--line-d)}
   .hdr__row{display:flex; align-items:center; gap:16px; height:56px; max-width:var(--wrap); margin:0 auto; padding:0 clamp(20px,5vw,44px)}
   .hdr__mark{display:flex; align-items:center; gap:10px; color:var(--on-dark); text-decoration:none; font-weight:700; letter-spacing:.01em; font-size:14px; white-space:nowrap}
-  .hdr__pulse{width:26px;height:16px}
+  .hdr__pulse{width:20px;height:20px}
   .hdr__nav{margin-left:auto; display:flex; gap:22px}
   .hdr__nav a{color:var(--on-dark-mut); text-decoration:none; font-size:12.5px; letter-spacing:.02em; transition:color .2s}
   .hdr__nav a:hover,.hdr__nav a:focus-visible{color:var(--teal-l); outline:none}
@@ -58,7 +58,7 @@
   .transition{display:inline-flex; align-items:stretch; gap:0; border:1px solid var(--line-d); border-radius:3px; overflow:hidden; background:rgba(255,255,255,.02)}
   .transition__cell{padding:12px 20px; display:flex; flex-direction:column; gap:2px}
   .transition__k{font-family:var(--mono); font-size:11px; letter-spacing:.1em; color:var(--muted); text-transform:uppercase}
-  .transition__v{font-size:1.05rem; font-weight:700; color:var(--on-dark); font-family:var(--mono); white-space:nowrap}
+  .transition__v{font-size:1.05rem; font-weight:700; color:var(--on-dark); font-family:var(--mono)}
   .transition__arrow{display:flex; align-items:center; padding:0 6px; background:rgba(200,30,58,.12); color:var(--crimson)}
   .transition__cell--new .transition__v{color:var(--teal-l)}
   .hero__by{margin-top:34px; font-size:13.5px; color:var(--on-dark-mut); display:flex; flex-wrap:wrap; gap:6px 16px; align-items:center}
@@ -90,18 +90,6 @@
   .sec--ink .sec__ey{color:var(--teal-l)}
   .sec__ey::before{content:attr(data-n); color:var(--crimson); font-weight:700}
   .sec__h{font-size:clamp(1.6rem,3.6vw,2.5rem); font-weight:800; letter-spacing:-.01em; line-height:1.16; margin:0 0 20px; text-wrap:balance; max-width:20ch}
-  .sec__h .brm{display:none}
-  .nb{white-space:nowrap}
-  @media(max-width:768px){
-    .sec__h{text-wrap:normal; word-break:keep-all; overflow-wrap:anywhere}
-    .sec__h .brm{display:block}
-    .hero h1{text-wrap:normal; word-break:keep-all; overflow-wrap:anywhere}
-  }
-  @media(max-width:480px){
-    .hero h1{font-size:2rem}
-    .sec__h{font-size:1.5rem}
-    .hero__lead{font-size:1rem; line-height:1.8}
-  }
   .sec__intro{font-size:clamp(1rem,1.5vw,1.1rem); color:var(--slate); max-width:60ch; margin:0}
   .sec--ink .sec__intro{color:#c1cfdb}
 
@@ -115,7 +103,7 @@
   .why__pt p{color:var(--slate); font-size:.95rem}
   .stats{display:flex; flex-direction:column; gap:2px; background:var(--line); border:1px solid var(--line); border-radius:4px; overflow:hidden}
   .stat{background:var(--surface); padding:22px 24px; display:flex; align-items:baseline; gap:14px}
-  .stat__v{font-family:var(--mono); font-size:2rem; font-weight:700; color:var(--ink); font-variant-numeric:tabular-nums; line-height:1; white-space:nowrap}
+  .stat__v{font-family:var(--mono); font-size:2rem; font-weight:700; color:var(--ink); font-variant-numeric:tabular-nums; line-height:1}
   .stat__v .u{font-size:1rem; color:var(--crimson); margin-left:2px}
   .stat__l{font-size:.9rem; color:var(--slate)}
 
@@ -242,8 +230,10 @@
   <header class="hdr">
     <div class="hdr__row">
       <a class="hdr__mark" href="#top">
-        <svg class="hdr__pulse" viewBox="0 0 52 32" fill="none" aria-hidden="true">
-          <path d="M0 16 H14 L18 16 L21 6 L26 26 L30 16 L34 16 L37 11 L40 16 H52" stroke="#c81e3a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <svg class="hdr__pulse" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <circle cx="5" cy="5" r="1.5" fill="#3fb8c4"/><circle cx="12" cy="5" r="1.5" fill="#3fb8c4"/><circle cx="19" cy="5" r="1.5" fill="#3fb8c4"/>
+          <circle cx="5" cy="12" r="1.5" fill="#3fb8c4"/><circle cx="12" cy="12" r="2" fill="#c81e3a"/><circle cx="19" cy="12" r="1.5" fill="#3fb8c4"/>
+          <circle cx="5" cy="19" r="1.5" fill="#3fb8c4"/><circle cx="12" cy="19" r="1.5" fill="#3fb8c4"/><circle cx="19" cy="19" r="1.5" fill="#3fb8c4"/>
         </svg>
         <span>サーバー更新のご相談</span>
       </a>
@@ -263,8 +253,8 @@
     <canvas class="hero__ecg" id="ecg" aria-hidden="true"></canvas>
     <div class="wrap">
       <p class="eyebrow">医局内ご相談 · FileMaker Pro / Server 更新 / 2026.07</p>
-      <h1><em>サーバー更新</em>に関する<wbr>御相談</h1>
-      <p class="hero__lead">現在の <b>FileMaker Pro / Server(<span class="nb">バージョン 19</span>)</b>は、<b>老朽化に伴い Update を検討しております</b>。最新の 2026 へ更新するにあたり、現行サーバーでは動作要件を満たせません。そのため <b>サーバーの買い換え(およそ <span class="nb">50 万円</span>)</b>が必要になります。あわせて、最新版で使える AI 検索が皆さまの研究にどう役立つかも、この資料でご説明します。ご相談させてください。</p>
+      <h1><em>サーバー更新</em>に関する御相談</h1>
+      <p class="hero__lead">現在の <b>FileMaker Pro / Server(バージョン 19)を最新の 2026 へ更新</b>したいのですが、現行サーバーでは動作要件を満たせません。そのため <b>サーバーの買い換え(およそ 50 万円)</b>が必要になります。あわせて、最新版で使える AI 検索が皆さまの研究にどう役立つかも、この資料でご説明します。ご相談させてください。</p>
       <div class="transition" role="img" aria-label="FileMaker 19 から FileMaker 2026 への移行">
         <div class="transition__cell transition__cell--old">
           <span class="transition__k">現行</span>
@@ -285,9 +275,9 @@
   <!-- summary -->
   <section class="summary">
     <div class="summary__grid">
-      <div class="summary__item"><span class="summary__n">01</span><div><div class="summary__t">FileMaker&nbsp;の老朽化に伴い更新が必要</div><div class="summary__d">現行の FileMaker Pro / Server(19)は老朽化。最新版(2026)への更新が必要です。</div></div></div>
+      <div class="summary__item"><span class="summary__n">01</span><div><div class="summary__t">FileMaker の老朽化に伴い更新が必要</div><div class="summary__d">現行の FileMaker Pro / Server(19)は老朽化。最新版(2026)への更新が必要です。</div></div></div>
       <div class="summary__item"><span class="summary__n">02</span><div><div class="summary__t">サーバーの買い換えが必要</div><div class="summary__d">最新版は現行サーバーの動作要件に非対応。新しいサーバーが要ります。</div></div></div>
-      <div class="summary__item"><span class="summary__n">03</span><div><div class="summary__t">費用はおよそ<span class="nb">50万円</span></div><div class="summary__d">新サーバーの購入費(概算)。構成・容量により変動します。</div></div></div>
+      <div class="summary__item"><span class="summary__n">03</span><div><div class="summary__t">費用はおよそ50万円</div><div class="summary__d">新サーバーの購入費(概算)。構成・容量により変動します。</div></div></div>
     </div>
   </section>
 
@@ -295,7 +285,7 @@
   <section class="sec sec--paper" id="why">
     <div class="wrap">
       <p class="sec__ey rv" data-n="01">Background</p>
-      <h2 class="sec__h rv rv-d1">いま動く理由 —<br class="brm"><span style="white-space:nowrap">20年分の資産を、次の10年へ</span></h2>
+      <h2 class="sec__h rv rv-d1">いま動く理由 — 20年分の資産を、次の10年へ</h2>
       <p class="sec__intro rv rv-d2">当科のデータベースには、長年の症例が確かに積み上がっています。問題は「量」ではなく、それを支える土台が寿命を迎えつつあること、そして蓄積を研究に活かしきれていないことです。</p>
       <div class="why__body">
         <div class="why__list">
@@ -316,13 +306,13 @@
   <section class="sec sec--light" id="move">
     <div class="wrap">
       <p class="sec__ey rv" data-n="02">Migration</p>
-      <h2 class="sec__h rv rv-d1">移行の全体像 —<br class="brm">旧環境から新環境へ</h2>
+      <h2 class="sec__h rv rv-d1">移行の全体像 — 旧環境から新環境へ</h2>
       <p class="sec__intro rv rv-d2">日々の使い勝手はそのままに、土台を新しくします。変わるのは「検索の賢さ」と「データの守り」です。</p>
       <div class="ba rv rv-d1">
         <div class="ba__col ba__col--old">
           <div class="ba__cap"><span>現行環境</span><span>Legacy</span></div>
           <div class="ba__rows">
-            <div class="ba__r"><span class="k">Software</span><span class="v"><span class="nb">FileMaker 19</span>(2020）</span></div>
+            <div class="ba__r"><span class="k">Software</span><span class="v">FileMaker 19(2020）</span></div>
             <div class="ba__r"><span class="k">Server</span><span class="v">現行サーバー(老朽化)</span></div>
             <div class="ba__r"><span class="k">Search</span><span class="v">キーワード完全一致</span></div>
             <div class="ba__r"><span class="k">Backup</span><span class="v">手動・限定的</span></div>
@@ -335,7 +325,7 @@
         <div class="ba__col ba__col--new">
           <div class="ba__cap"><span>新環境</span><span>2026</span></div>
           <div class="ba__rows">
-            <div class="ba__r"><span class="k">Software</span><span class="v"><span class="nb">FileMaker 2026</span>(最新)</span></div>
+            <div class="ba__r"><span class="k">Software</span><span class="v">FileMaker 2026(最新)</span></div>
             <div class="ba__r"><span class="k">Server</span><span class="v">新規サーバー(Mac / Windows)</span></div>
             <div class="ba__r"><span class="k">Search</span><span class="v">自然言語・意味検索(AI)</span></div>
             <div class="ba__r"><span class="k">Backup</span><span class="v">20分ごと自動 + 予備サーバー</span></div>
@@ -350,8 +340,8 @@
   <section class="sec sec--ink" id="ai">
     <div class="wrap">
       <p class="sec__ey rv" data-n="03">AI in FileMaker 2026</p>
-      <h2 class="sec__h rv rv-d1">新しくできること —<br class="brm">AI&nbsp;が研究を後押しする</h2>
-      <p class="sec__intro rv rv-d2"><span class="nb">FileMaker 2026</span> は AI 検索を標準で備えます。特別なプログラミングなしに、日々の症例データへ「意味」で問いかけられるようになります。</p>
+      <h2 class="sec__h rv rv-d1">新しくできること — AI が研究を後押しする</h2>
+      <p class="sec__intro rv rv-d2">FileMaker 2026 は AI 検索を標準で備えます。特別なプログラミングなしに、日々の症例データへ「意味」で問いかけられるようになります。</p>
       <div class="ai">
         <article class="aic rv">
           <div class="aic__ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h10M4 18h7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="18" cy="16" r="3.5" stroke="currentColor" stroke-width="1.8"/><path d="M21 19l1.5 1.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
@@ -418,7 +408,7 @@
       <div class="costbox rv rv-d1">
         <div class="costbox__label">サーバー買い換え(新規購入・概算)</div>
         <div class="costbox__price"><span class="approx">およそ</span><span class="num" data-count="50">50</span><span class="man">万円</span></div>
-        <div class="costbox__note">FileMaker Server 2026 に対応した新サーバー。Mac / Windows いずれでも構成できます(メモリ <span class="nb">16GB 以上</span>・ストレージ <span class="nb">2〜4TB</span>)。<b>最終的な金額は構成・容量により変動します。</b></div>
+        <div class="costbox__note">FileMaker Server 2026 に対応した新サーバー。Mac / Windows いずれでも構成できます(メモリ 16GB 以上・ストレージ 2〜4TB)。<b>最終的な金額は構成・容量により変動します。</b></div>
       </div>
       <div class="costnote rv">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#2a9aa8" stroke-width="1.8"/><path d="M12 8h.01M11 12h1v4h1" stroke="#2a9aa8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -432,7 +422,7 @@
     <div class="wrap">
       <p class="sec__ey rv" data-n="06">Next Steps</p>
       <h2 class="sec__h rv rv-d1">今後の流れ</h2>
-      <p class="sec__intro rv rv-d2">大きくは <span class="nb">5 段階</span>で進めます。症例入力への影響を最小限にしながら移行します。</p>
+      <p class="sec__intro rv rv-d2">大きくは 5 段階で進めます。症例入力への影響を最小限にしながら移行します。</p>
       <div class="tl">
         <div class="tls rv"><div class="tls__n">STEP 1</div><h4 class="tls__t">構成の決定</h4><p class="tls__d">Mac / Windows と容量を確定。医局のご意見を反映。</p></div>
         <div class="tls rv rv-d1"><div class="tls__n">STEP 2</div><h4 class="tls__t">発注・調達</h4><p class="tls__d">外部ベンダーへ発注、機材とライセンスを手配。</p></div>
@@ -510,70 +500,78 @@
     counters.forEach(function(el){cio.observe(el);});
   } else { counters.forEach(countUp); }
 
-  /* ECG canvas */
+  /* data-grid scan — database index / AI search motif */
   var cv = document.getElementById('ecg');
   if(cv){
     var ctx = cv.getContext('2d'), W=0, H=0, dpr=Math.min(window.devicePixelRatio||1,2);
-    function beatY(t){
-      var y=0;
-      y += Math.exp(-Math.pow((t-0.15)/0.030,2))*0.12;
-      y -= Math.exp(-Math.pow((t-0.28)/0.013,2))*0.16;
-      y += Math.exp(-Math.pow((t-0.32)/0.010,2))*1.00;
-      y -= Math.exp(-Math.pow((t-0.37)/0.016,2))*0.30;
-      y += Math.exp(-Math.pow((t-0.56)/0.055,2))*0.22;
-      return y;
-    }
-    var beatW=190, mid, amp;
-    function resize(){
+    var gap=46, cells=[], cols=0;
+    function build(){
       W = cv.clientWidth; H = cv.clientHeight;
       cv.width = W*dpr; cv.height = H*dpr;
       ctx.setTransform(dpr,0,0,dpr,0,0);
-      mid = H*0.62; amp = Math.min(H*0.30, 150);
-    }
-    function trace(x0,x1){
-      ctx.beginPath();
-      for(var x=x0;x<=x1;x++){
-        var t=(x % beatW)/beatW;
-        var y=mid - beatY(t)*amp;
-        if(x===x0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+      cells=[]; cols = Math.ceil(W/gap)+1;
+      var rows = Math.ceil(H/gap)+1;
+      for(var r=0;r<rows;r++){
+        for(var c=0;c<cols;c++){
+          cells.push({
+            x: c*gap + (Math.sin(c*12.9+r*4.7)*0.5+0.5)*11,
+            y: r*gap + (Math.sin(c*3.3+r*7.1)*0.5+0.5)*11,
+            ph: c*0.55 + r*0.8,
+            crim: ((c*7 + r*13) % 19) === 0
+          });
+        }
       }
     }
-    function drawStatic(){
+    function render(sweepX, t){
       ctx.clearRect(0,0,W,H);
-      ctx.lineWidth=1.4; ctx.strokeStyle='rgba(120,150,180,0.16)';
-      ctx.lineJoin='round'; ctx.lineCap='round';
-      trace(0,W); ctx.stroke();
+      var band = W*0.20;
+      for(var i=0;i<cells.length;i++){
+        var cell=cells[i];
+        var near = Math.max(0, 1 - Math.abs(cell.x - sweepX)/band);
+        if(near>0.28 && (i % cols) < cols-1){
+          var right = cells[i+1];
+          if(right){
+            ctx.strokeStyle='rgba(67,192,204,'+(near*0.15)+')';
+            ctx.lineWidth=1;
+            ctx.beginPath(); ctx.moveTo(cell.x,cell.y); ctx.lineTo(right.x,right.y); ctx.stroke();
+          }
+        }
+      }
+      for(var j=0;j<cells.length;j++){
+        var cl=cells[j];
+        var nr = Math.max(0, 1 - Math.abs(cl.x - sweepX)/band);
+        var tw = 0.5+0.5*Math.sin(t*1.3 + cl.ph);
+        var a = 0.05 + 0.045*tw + nr*0.55;
+        var s = 1.5 + nr*2.6;
+        ctx.fillStyle = (cl.crim && nr>0.2)
+          ? 'rgba(200,30,58,'+Math.min(1,a*1.15)+')'
+          : 'rgba(74,190,205,'+Math.min(1,a)+')';
+        ctx.fillRect(cl.x - s/2, cl.y - s/2, s, s);
+      }
+      if(sweepX>=0 && sweepX<=W){
+        var g=ctx.createLinearGradient(sweepX-band*0.6,0,sweepX+10,0);
+        g.addColorStop(0,'rgba(67,192,204,0)');
+        g.addColorStop(1,'rgba(67,192,204,0.10)');
+        ctx.fillStyle=g; ctx.fillRect(sweepX-band*0.6,0,band*0.6+10,H);
+      }
     }
-    var sweep=0;
+    var sweepX=0, tt=0, raf=null;
     function frame(){
-      ctx.clearRect(0,0,W,H);
-      ctx.lineWidth=1.4; ctx.strokeStyle='rgba(120,150,180,0.14)';
-      ctx.lineJoin='round'; ctx.lineCap='round';
-      trace(0,W); ctx.stroke();
-      /* bright sweeping segment */
-      var win=150;
-      var s=Math.max(0,sweep-win), e2=sweep;
-      var grd=ctx.createLinearGradient(s,0,e2,0);
-      grd.addColorStop(0,'rgba(67,192,204,0)');
-      grd.addColorStop(0.6,'rgba(67,192,204,0.55)');
-      grd.addColorStop(1,'rgba(200,30,58,0.95)');
-      ctx.lineWidth=2.2; ctx.strokeStyle=grd;
-      trace(s,e2); ctx.stroke();
-      /* leading dot */
-      var t=(e2 % beatW)/beatW, yd=mid - beatY(t)*amp;
-      ctx.beginPath(); ctx.arc(e2,yd,3.2,0,Math.PI*2);
-      ctx.fillStyle='#e8607a'; ctx.shadowColor='rgba(200,30,58,.8)'; ctx.shadowBlur=12;
-      ctx.fill(); ctx.shadowBlur=0;
-      sweep += 3.4;
-      if(sweep > W+win) sweep=0;
-      raf=requestAnimationFrame(frame);
+      tt += 0.016;
+      render(sweepX, tt);
+      sweepX += Math.max(1.6, W*0.0024);
+      if(sweepX > W + W*0.22) sweepX = -W*0.1;
+      raf = requestAnimationFrame(frame);
     }
-    var raf=null;
-    function start(){ if(raf) cancelAnimationFrame(raf); resize(); if(reduce||noAnim){ drawStatic(); } else { sweep=0; frame(); } }
+    function start(){
+      if(raf) cancelAnimationFrame(raf);
+      build();
+      if(reduce||noAnim){ render(W*0.5, 0.6); }
+      else { sweepX = -W*0.1; frame(); }
+    }
     var rt;
     window.addEventListener('resize', function(){ clearTimeout(rt); rt=setTimeout(start,180); });
     start();
-    /* pause when hero off-screen */
     if('IntersectionObserver' in window && !reduce && !noAnim){
       var hio=new IntersectionObserver(function(en){
         en.forEach(function(x){
