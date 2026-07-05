@@ -58,7 +58,7 @@
   .transition{display:inline-flex; align-items:stretch; gap:0; border:1px solid var(--line-d); border-radius:3px; overflow:hidden; background:rgba(255,255,255,.02)}
   .transition__cell{padding:12px 20px; display:flex; flex-direction:column; gap:2px}
   .transition__k{font-family:var(--mono); font-size:11px; letter-spacing:.1em; color:var(--muted); text-transform:uppercase}
-  .transition__v{font-size:1.05rem; font-weight:700; color:var(--on-dark); font-family:var(--mono)}
+  .transition__v{font-size:1.05rem; font-weight:700; color:var(--on-dark); font-family:var(--mono); white-space:nowrap}
   .transition__arrow{display:flex; align-items:center; padding:0 6px; background:rgba(200,30,58,.12); color:var(--crimson)}
   .transition__cell--new .transition__v{color:var(--teal-l)}
   .hero__by{margin-top:34px; font-size:13.5px; color:var(--on-dark-mut); display:flex; flex-wrap:wrap; gap:6px 16px; align-items:center}
@@ -91,7 +91,17 @@
   .sec__ey::before{content:attr(data-n); color:var(--crimson); font-weight:700}
   .sec__h{font-size:clamp(1.6rem,3.6vw,2.5rem); font-weight:800; letter-spacing:-.01em; line-height:1.16; margin:0 0 20px; text-wrap:balance; max-width:20ch}
   .sec__h .brm{display:none}
-  @media(max-width:768px){.sec__h{text-wrap:normal; word-break:normal} .sec__h .brm{display:block}}
+  .nb{white-space:nowrap}
+  @media(max-width:768px){
+    .sec__h{text-wrap:normal; word-break:keep-all; overflow-wrap:anywhere}
+    .sec__h .brm{display:block}
+    .hero h1{text-wrap:normal; word-break:keep-all; overflow-wrap:anywhere}
+  }
+  @media(max-width:480px){
+    .hero h1{font-size:2rem}
+    .sec__h{font-size:1.5rem}
+    .hero__lead{font-size:1rem; line-height:1.8}
+  }
   .sec__intro{font-size:clamp(1rem,1.5vw,1.1rem); color:var(--slate); max-width:60ch; margin:0}
   .sec--ink .sec__intro{color:#c1cfdb}
 
@@ -253,8 +263,8 @@
     <canvas class="hero__ecg" id="ecg" aria-hidden="true"></canvas>
     <div class="wrap">
       <p class="eyebrow">医局内ご相談 · FileMaker Pro / Server 更新 / 2026.07</p>
-      <h1><em>サーバー更新</em>に関する御相談</h1>
-      <p class="hero__lead">現在の <b>FileMaker Pro / Server(バージョン 19)</b>は、<b>老朽化に伴い Update を検討しております</b>。最新の 2026 へ更新するにあたり、現行サーバーでは動作要件を満たせません。そのため <b>サーバーの買い換え(およそ 50 万円)</b>が必要になります。あわせて、最新版で使える AI 検索が皆さまの研究にどう役立つかも、この資料でご説明します。ご相談させてください。</p>
+      <h1><em>サーバー更新</em>に関する<wbr>御相談</h1>
+      <p class="hero__lead">現在の <b>FileMaker Pro / Server(<span class="nb">バージョン 19</span>)</b>は、<b>老朽化に伴い Update を検討しております</b>。最新の 2026 へ更新するにあたり、現行サーバーでは動作要件を満たせません。そのため <b>サーバーの買い換え(およそ <span class="nb">50 万円</span>)</b>が必要になります。あわせて、最新版で使える AI 検索が皆さまの研究にどう役立つかも、この資料でご説明します。ご相談させてください。</p>
       <div class="transition" role="img" aria-label="FileMaker 19 から FileMaker 2026 への移行">
         <div class="transition__cell transition__cell--old">
           <span class="transition__k">現行</span>
@@ -275,9 +285,9 @@
   <!-- summary -->
   <section class="summary">
     <div class="summary__grid">
-      <div class="summary__item"><span class="summary__n">01</span><div><div class="summary__t">FileMaker の老朽化に伴い更新が必要</div><div class="summary__d">現行の FileMaker Pro / Server(19)は老朽化。最新版(2026)への更新が必要です。</div></div></div>
+      <div class="summary__item"><span class="summary__n">01</span><div><div class="summary__t">FileMaker&nbsp;の老朽化に伴い更新が必要</div><div class="summary__d">現行の FileMaker Pro / Server(19)は老朽化。最新版(2026)への更新が必要です。</div></div></div>
       <div class="summary__item"><span class="summary__n">02</span><div><div class="summary__t">サーバーの買い換えが必要</div><div class="summary__d">最新版は現行サーバーの動作要件に非対応。新しいサーバーが要ります。</div></div></div>
-      <div class="summary__item"><span class="summary__n">03</span><div><div class="summary__t">費用はおよそ50万円</div><div class="summary__d">新サーバーの購入費(概算)。構成・容量により変動します。</div></div></div>
+      <div class="summary__item"><span class="summary__n">03</span><div><div class="summary__t">費用はおよそ<span class="nb">50万円</span></div><div class="summary__d">新サーバーの購入費(概算)。構成・容量により変動します。</div></div></div>
     </div>
   </section>
 
@@ -285,7 +295,7 @@
   <section class="sec sec--paper" id="why">
     <div class="wrap">
       <p class="sec__ey rv" data-n="01">Background</p>
-      <h2 class="sec__h rv rv-d1">いま動く理由 —<br class="brm">20年分の資産を、次の10年へ</h2>
+      <h2 class="sec__h rv rv-d1">いま動く理由 —<br class="brm">20年分の資産を、<wbr>次の10年へ</h2>
       <p class="sec__intro rv rv-d2">当科のデータベースには、長年の症例が確かに積み上がっています。問題は「量」ではなく、それを支える土台が寿命を迎えつつあること、そして蓄積を研究に活かしきれていないことです。</p>
       <div class="why__body">
         <div class="why__list">
@@ -312,7 +322,7 @@
         <div class="ba__col ba__col--old">
           <div class="ba__cap"><span>現行環境</span><span>Legacy</span></div>
           <div class="ba__rows">
-            <div class="ba__r"><span class="k">Software</span><span class="v">FileMaker 19(2020）</span></div>
+            <div class="ba__r"><span class="k">Software</span><span class="v"><span class="nb">FileMaker 19</span>(2020）</span></div>
             <div class="ba__r"><span class="k">Server</span><span class="v">現行サーバー(老朽化)</span></div>
             <div class="ba__r"><span class="k">Search</span><span class="v">キーワード完全一致</span></div>
             <div class="ba__r"><span class="k">Backup</span><span class="v">手動・限定的</span></div>
@@ -325,7 +335,7 @@
         <div class="ba__col ba__col--new">
           <div class="ba__cap"><span>新環境</span><span>2026</span></div>
           <div class="ba__rows">
-            <div class="ba__r"><span class="k">Software</span><span class="v">FileMaker 2026(最新)</span></div>
+            <div class="ba__r"><span class="k">Software</span><span class="v"><span class="nb">FileMaker 2026</span>(最新)</span></div>
             <div class="ba__r"><span class="k">Server</span><span class="v">新規サーバー(Mac / Windows)</span></div>
             <div class="ba__r"><span class="k">Search</span><span class="v">自然言語・意味検索(AI)</span></div>
             <div class="ba__r"><span class="k">Backup</span><span class="v">20分ごと自動 + 予備サーバー</span></div>
@@ -340,8 +350,8 @@
   <section class="sec sec--ink" id="ai">
     <div class="wrap">
       <p class="sec__ey rv" data-n="03">AI in FileMaker 2026</p>
-      <h2 class="sec__h rv rv-d1">新しくできること —<br class="brm">AI が研究を後押しする</h2>
-      <p class="sec__intro rv rv-d2">FileMaker 2026 は AI 検索を標準で備えます。特別なプログラミングなしに、日々の症例データへ「意味」で問いかけられるようになります。</p>
+      <h2 class="sec__h rv rv-d1">新しくできること —<br class="brm">AI&nbsp;が研究を後押しする</h2>
+      <p class="sec__intro rv rv-d2"><span class="nb">FileMaker 2026</span> は AI 検索を標準で備えます。特別なプログラミングなしに、日々の症例データへ「意味」で問いかけられるようになります。</p>
       <div class="ai">
         <article class="aic rv">
           <div class="aic__ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h10M4 18h7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="18" cy="16" r="3.5" stroke="currentColor" stroke-width="1.8"/><path d="M21 19l1.5 1.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
@@ -408,7 +418,7 @@
       <div class="costbox rv rv-d1">
         <div class="costbox__label">サーバー買い換え(新規購入・概算)</div>
         <div class="costbox__price"><span class="approx">およそ</span><span class="num" data-count="50">50</span><span class="man">万円</span></div>
-        <div class="costbox__note">FileMaker Server 2026 に対応した新サーバー。Mac / Windows いずれでも構成できます(メモリ 16GB 以上・ストレージ 2〜4TB)。<b>最終的な金額は構成・容量により変動します。</b></div>
+        <div class="costbox__note">FileMaker Server 2026 に対応した新サーバー。Mac / Windows いずれでも構成できます(メモリ <span class="nb">16GB 以上</span>・ストレージ <span class="nb">2〜4TB</span>)。<b>最終的な金額は構成・容量により変動します。</b></div>
       </div>
       <div class="costnote rv">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#2a9aa8" stroke-width="1.8"/><path d="M12 8h.01M11 12h1v4h1" stroke="#2a9aa8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -422,7 +432,7 @@
     <div class="wrap">
       <p class="sec__ey rv" data-n="06">Next Steps</p>
       <h2 class="sec__h rv rv-d1">今後の流れ</h2>
-      <p class="sec__intro rv rv-d2">大きくは 5 段階で進めます。症例入力への影響を最小限にしながら移行します。</p>
+      <p class="sec__intro rv rv-d2">大きくは <span class="nb">5 段階</span>で進めます。症例入力への影響を最小限にしながら移行します。</p>
       <div class="tl">
         <div class="tls rv"><div class="tls__n">STEP 1</div><h4 class="tls__t">構成の決定</h4><p class="tls__d">Mac / Windows と容量を確定。医局のご意見を反映。</p></div>
         <div class="tls rv rv-d1"><div class="tls__n">STEP 2</div><h4 class="tls__t">発注・調達</h4><p class="tls__d">外部ベンダーへ発注、機材とライセンスを手配。</p></div>
