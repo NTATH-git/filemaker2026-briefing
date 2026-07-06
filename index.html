@@ -499,86 +499,70 @@
     counters.forEach(function(el){cio.observe(el);});
   } else { counters.forEach(countUp); }
 
-  /* data-grid scan — database index / AI search motif */
+  /* flowing gradient (WebGL) — ambient hero backdrop, clinical palette */
   var cv = document.getElementById('ecg');
   if(cv){
-    var ctx = cv.getContext('2d'), W=0, H=0, dpr=Math.min(window.devicePixelRatio||1,2);
-    var gap=46, cells=[], cols=0;
-    function build(){
-      W = cv.clientWidth; H = cv.clientHeight;
-      cv.width = W*dpr; cv.height = H*dpr;
-      ctx.setTransform(dpr,0,0,dpr,0,0);
-      cells=[]; cols = Math.ceil(W/gap)+1;
-      var rows = Math.ceil(H/gap)+1;
-      for(var r=0;r<rows;r++){
-        for(var c=0;c<cols;c++){
-          cells.push({
-            x: c*gap + (Math.sin(c*12.9+r*4.7)*0.5+0.5)*11,
-            y: r*gap + (Math.sin(c*3.3+r*7.1)*0.5+0.5)*11,
-            ph: c*0.55 + r*0.8,
-            crim: ((c*7 + r*13) % 19) === 0
+    var gl = cv.getContext('webgl') || cv.getContext('experimental-webgl');
+    if(gl){
+      var vsrc='attribute vec2 p;void main(){gl_Position=vec4(p,0.0,1.0);}';
+      var fsrc=[
+      'precision highp float;',
+      'uniform vec2 uRes; uniform float uT;',
+      'float hash(vec2 p){p=fract(p*vec2(123.34,456.21));p+=dot(p,p+45.32);return fract(p.x*p.y);}',
+      'float noise(vec2 p){vec2 i=floor(p),f=fract(p);vec2 u=f*f*(3.0-2.0*f);',
+      ' float a=hash(i),b=hash(i+vec2(1.0,0.0)),c=hash(i+vec2(0.0,1.0)),d=hash(i+vec2(1.0,1.0));',
+      ' return mix(mix(a,b,u.x),mix(c,d,u.x),u.y);}',
+      'float fbm(vec2 p){float v=0.0,a=0.5;mat2 m=mat2(1.6,1.2,-1.2,1.6);',
+      ' for(int i=0;i<6;i++){v+=a*noise(p);p=m*p;a*=0.5;}return v;}',
+      'void main(){',
+      ' vec2 uv=gl_FragCoord.xy/uRes.xy;',
+      ' vec2 p=uv;p.x*=uRes.x/uRes.y;p*=1.7;',
+      ' float t=uT*0.035;',
+      ' vec2 q=vec2(fbm(p+vec2(0.0,t)),fbm(p+vec2(5.2,1.3)-t*0.7));',
+      ' vec2 r=vec2(fbm(p+2.0*q+vec2(1.7,9.2)+t*0.5),fbm(p+2.0*q+vec2(8.3,2.8)-t*0.4));',
+      ' float f=fbm(p+2.6*r);',
+      ' vec3 c1=vec3(0.033,0.052,0.086);',
+      ' vec3 c2=vec3(0.055,0.105,0.16);',
+      ' vec3 c3=vec3(0.07,0.20,0.25);',
+      ' vec3 c4=vec3(0.16,0.52,0.58);',
+      ' vec3 crim=vec3(0.55,0.10,0.19);',
+      ' vec3 col=mix(c1,c2,smoothstep(0.0,0.5,f));',
+      ' col=mix(col,c3,smoothstep(0.46,0.74,f));',
+      ' col=mix(col,c4,smoothstep(0.72,1.0,f));',
+      ' col=mix(col,crim,smoothstep(0.86,1.06,f)*0.4*smoothstep(0.45,0.85,length(r)));',
+      ' vec2 g=vec2(0.74,0.42);float d=distance(uv,g);',
+      ' col+=vec3(0.15,0.55,0.6)*smoothstep(0.6,0.0,d)*0.16;',
+      ' col*=mix(0.5,1.0,smoothstep(0.0,0.64,uv.x));',
+      ' col*=1.0-0.22*smoothstep(0.5,1.2,distance(uv,vec2(0.5,0.35)));',
+      ' col+=(hash(gl_FragCoord.xy+vec2(uT))-0.5)*0.015;',
+      ' gl_FragColor=vec4(col,1.0);',
+      '}'].join('\n');
+      var sh=function(ty,s){var o=gl.createShader(ty);gl.shaderSource(o,s);gl.compileShader(o);return o;};
+      var prog=gl.createProgram();
+      gl.attachShader(prog,sh(gl.VERTEX_SHADER,vsrc));
+      gl.attachShader(prog,sh(gl.FRAGMENT_SHADER,fsrc));
+      gl.linkProgram(prog);gl.useProgram(prog);
+      var bf=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,bf);
+      gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,3,-1,-1,3]),gl.STATIC_DRAW);
+      var lc=gl.getAttribLocation(prog,'p');gl.enableVertexAttribArray(lc);
+      gl.vertexAttribPointer(lc,2,gl.FLOAT,false,0,0);
+      var uRes=gl.getUniformLocation(prog,'uRes'),uT=gl.getUniformLocation(prog,'uT');
+      var dpr=Math.min(window.devicePixelRatio||1,1.75), raf=null, t0=0;
+      function resize(){var w=cv.clientWidth,h=cv.clientHeight;cv.width=Math.floor(w*dpr);cv.height=Math.floor(h*dpr);gl.viewport(0,0,cv.width,cv.height);gl.uniform2f(uRes,cv.width,cv.height);}
+      function frame(now){if(!t0)t0=now;gl.uniform1f(uT,(now-t0)/1000);gl.drawArrays(gl.TRIANGLES,0,3);raf=requestAnimationFrame(frame);}
+      function drawStatic(){gl.uniform1f(uT,9.0);gl.drawArrays(gl.TRIANGLES,0,3);}
+      function start(){if(raf)cancelAnimationFrame(raf);resize();if(reduce||noAnim){drawStatic();}else{t0=0;raf=requestAnimationFrame(frame);}}
+      var rt;window.addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(start,160);});
+      start();
+      if('IntersectionObserver' in window && !reduce && !noAnim){
+        var hio=new IntersectionObserver(function(en){
+          en.forEach(function(x){
+            if(x.isIntersecting){ if(!raf){ t0=0; raf=requestAnimationFrame(frame); } }
+            else { if(raf){ cancelAnimationFrame(raf); raf=null; } }
           });
-        }
+        },{threshold:0});
+        hio.observe(cv);
       }
-    }
-    function render(sweepX, t){
-      ctx.clearRect(0,0,W,H);
-      var band = W*0.20;
-      for(var i=0;i<cells.length;i++){
-        var cell=cells[i];
-        var near = Math.max(0, 1 - Math.abs(cell.x - sweepX)/band);
-        if(near>0.28 && (i % cols) < cols-1){
-          var right = cells[i+1];
-          if(right){
-            ctx.strokeStyle='rgba(67,192,204,'+(near*0.15)+')';
-            ctx.lineWidth=1;
-            ctx.beginPath(); ctx.moveTo(cell.x,cell.y); ctx.lineTo(right.x,right.y); ctx.stroke();
-          }
-        }
-      }
-      for(var j=0;j<cells.length;j++){
-        var cl=cells[j];
-        var nr = Math.max(0, 1 - Math.abs(cl.x - sweepX)/band);
-        var tw = 0.5+0.5*Math.sin(t*1.3 + cl.ph);
-        var a = 0.05 + 0.045*tw + nr*0.55;
-        var s = 1.5 + nr*2.6;
-        ctx.fillStyle = (cl.crim && nr>0.2)
-          ? 'rgba(200,30,58,'+Math.min(1,a*1.15)+')'
-          : 'rgba(74,190,205,'+Math.min(1,a)+')';
-        ctx.fillRect(cl.x - s/2, cl.y - s/2, s, s);
-      }
-      if(sweepX>=0 && sweepX<=W){
-        var g=ctx.createLinearGradient(sweepX-band*0.6,0,sweepX+10,0);
-        g.addColorStop(0,'rgba(67,192,204,0)');
-        g.addColorStop(1,'rgba(67,192,204,0.10)');
-        ctx.fillStyle=g; ctx.fillRect(sweepX-band*0.6,0,band*0.6+10,H);
-      }
-    }
-    var sweepX=0, tt=0, raf=null;
-    function frame(){
-      tt += 0.016;
-      render(sweepX, tt);
-      sweepX += Math.max(1.6, W*0.0024);
-      if(sweepX > W + W*0.22) sweepX = -W*0.1;
-      raf = requestAnimationFrame(frame);
-    }
-    function start(){
-      if(raf) cancelAnimationFrame(raf);
-      build();
-      if(reduce||noAnim){ render(W*0.5, 0.6); }
-      else { sweepX = -W*0.1; frame(); }
-    }
-    var rt;
-    window.addEventListener('resize', function(){ clearTimeout(rt); rt=setTimeout(start,180); });
-    start();
-    if('IntersectionObserver' in window && !reduce && !noAnim){
-      var hio=new IntersectionObserver(function(en){
-        en.forEach(function(x){
-          if(x.isIntersecting){ if(!raf) frame(); }
-          else { if(raf){ cancelAnimationFrame(raf); raf=null; } }
-        });
-      },{threshold:0});
-      hio.observe(cv);
     }
   }
 })();
