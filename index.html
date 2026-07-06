@@ -54,7 +54,7 @@
   .hero h1{font-size:clamp(2.3rem,6.4vw,4.15rem); line-height:1.08; letter-spacing:-.01em; font-weight:800;
     margin:0 0 24px; text-wrap:balance; max-width:none; white-space:nowrap}
   @media(max-width:640px){ .hero h1{white-space:normal} }
-  .hero h1 em{font-style:normal; color:var(--crimson); position:relative; white-space:nowrap}
+  .hero h1 em{font-style:normal; color:inherit; position:relative; white-space:nowrap}
   .hero__lead{font-size:clamp(1rem,1.9vw,1.2rem); color:#c7d3de; max-width:56ch; margin:0 0 34px}
   .hero__key{font-size:clamp(1.15rem,2.4vw,1.55rem); font-weight:700; color:var(--on-dark); line-height:1.55; margin:0 0 22px; max-width:34ch; border-left:3px solid var(--crimson); padding-left:16px; text-wrap:balance}
   .transition{display:inline-flex; align-items:stretch; gap:0; border:1px solid var(--line-d); border-radius:3px; overflow:hidden; background:rgba(255,255,255,.02)}
@@ -517,7 +517,7 @@
       'void main(){',
       ' vec2 uv=gl_FragCoord.xy/uRes.xy;',
       ' vec2 p=uv;p.x*=uRes.x/uRes.y;p*=1.7;',
-      ' float t=uT*0.035;',
+      ' float t=uT*0.10;',
       ' vec2 q=vec2(fbm(p+vec2(0.0,t)),fbm(p+vec2(5.2,1.3)-t*0.7));',
       ' vec2 r=vec2(fbm(p+2.0*q+vec2(1.7,9.2)+t*0.5),fbm(p+2.0*q+vec2(8.3,2.8)-t*0.4));',
       ' float f=fbm(p+2.6*r);',
