@@ -52,7 +52,8 @@
     display:flex; align-items:center; gap:12px; margin:0 0 22px}
   .eyebrow::before{content:""; width:26px; height:1px; background:var(--teal)}
   .hero h1{font-size:clamp(2.3rem,6.4vw,4.15rem); line-height:1.08; letter-spacing:-.01em; font-weight:800;
-    margin:0 0 24px; text-wrap:balance; max-width:22ch}
+    margin:0 0 24px; text-wrap:balance; max-width:none; white-space:nowrap}
+  @media(max-width:640px){ .hero h1{white-space:normal} }
   .hero h1 em{font-style:normal; color:var(--crimson); position:relative; white-space:nowrap}
   .hero__lead{font-size:clamp(1rem,1.9vw,1.2rem); color:#c7d3de; max-width:56ch; margin:0 0 34px}
   .hero__key{font-size:clamp(1.15rem,2.4vw,1.55rem); font-weight:700; color:var(--on-dark); line-height:1.55; margin:0 0 22px; max-width:34ch; border-left:3px solid var(--crimson); padding-left:16px; text-wrap:balance}
@@ -256,7 +257,7 @@
       <p class="eyebrow">医局内ご相談 · FileMaker Pro / Server 更新 / 2026.07</p>
       <h1><em>サーバー更新</em>に関する御相談</h1>
       <p class="hero__key">老朽化により、FileMaker と サーバーの更新は避けられません。</p>
-      <p class="hero__lead">現行の <b>FileMaker Pro / Server(バージョン 19)は老朽化</b>が進み、サポート・セキュリティの面でも限界に近づいています。最新の 2026 は現行サーバーの動作要件を満たさず、<b>サーバー本体の買い換え(およそ 50 万円)</b>が必要です。老朽化に伴う<b>やむを得ない対応</b>として、皆さまにご相談いたします。あわせて、新環境で使える AI 検索が研究にどう役立つかもご説明します。</p>
+      <p class="hero__lead">現行の <b>FileMaker Pro / Server(バージョン 19)は老朽化</b>が進み、サポート・セキュリティの面が限界に近づいています。最新の 2026 は現行サーバーの動作要件を満たさず、<b>サーバー本体の買い換え(およそ 50 万円)</b>が検討される状況です。</p>
       <div class="transition" role="img" aria-label="FileMaker 19 から FileMaker 2026 への移行">
         <div class="transition__cell transition__cell--old">
           <span class="transition__k">現行</span>
